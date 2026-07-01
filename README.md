@@ -41,6 +41,19 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
+## GitHub Deployment Prep
+
+1. Create a repository on GitHub under `https://github.com/Alexdoned`.
+2. Add the remote in your project:
+
+```powershell
+git remote add origin https://github.com/Alexdoned/My-portfolio.git
+git branch -M main
+git push -u origin main
+```
+
+3. If you choose a different repo name, replace `My-portfolio.git` with your actual repository name.
+
 ## Production Notes
 
 - Configure `DJANGO_SECRET_KEY`, `DJANGO_DEBUG=False`, and `DJANGO_ALLOWED_HOSTS`
