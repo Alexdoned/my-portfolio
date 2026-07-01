@@ -1,0 +1,76 @@
+{% extends 'core/base.html' %}
+{% block title %}Projects | Portfolio{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Projects</h2>
+        <form class="d-flex" method="get">
+            <input name="search" class="form-control me-2" placeholder="Search projects" value="{{ search_query }}">
+            <button class="btn btn-primary" type="submit">Search</button>
+        </form>
+    </div>
+    <div class="mb-4">
+        <span class="me-2">Filter by technology:</span>
+        {% for tech in all_technologies %}
+            <a href="?technology={{ tech }}" class="btn btn-outline-secondary btn-sm mb-2 {% if tech == technology_filter %}active{% endif %}">{{ tech }}</a>
+        {% endfor %}
+        <a href="{% url 'project_list' %}" class="btn btn-link btn-sm">Clear</a>
+    </div>
+    <div class="row g-4">
+        {% for project in page_obj %}
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm project-card">
+                    {% if project.image %}
+                        <img src="{{ project.image.url }}" class="card-img-top" alt="{{ project.title }}">
+                    {% else %}
+                        <div class="placeholder-img"></div>
+                    {% endif %}
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">
+                            {% if project.live_demo_url %}
+                                <a href="{{ project.live_demo_url }}" target="_blank" rel="noopener" class="text-decoration-none">{{ project.title }} ↗</a>
+                            {% else %}
+                                {{ project.title }}
+                            {% endif %}
+                        </h5>
+                        <p class="card-text text-truncate">{{ project.description }}</p>
+                        <div class="mt-auto">
+                            {% for tech in project.technology_list %}
+                                <span class="badge bg-secondary me-1">{{ tech }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0">
+                        <div class="d-flex flex-wrap gap-2">
+                            <a href="{% url 'project_detail' project.pk %}" class="btn btn-outline-primary">View Details</a>
+                            {% if project.github_url %}
+                                <a href="{{ project.github_url }}" target="_blank" rel="noopener" class="btn btn-outline-dark">GitHub</a>
+                            {% endif %}
+                            {% if project.live_demo_url %}
+                                <a href="{{ project.live_demo_url }}" target="_blank" rel="noopener" class="btn btn-primary">Live Demo</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p>No projects found.</p>
+        {% endfor %}
+    </div>
+    <nav class="mt-4">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if search_query %}&search={{ search_query }}{% endif %}{% if technology_filter %}&technology={{ technology_filter }}{% endif %}">Previous</a></li>
+            {% else %}
+                <li class="page-item disabled"><span class="page-link">Previous</span></li>
+            {% endif %}
+            <li class="page-item disabled"><span class="page-link">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span></li>
+            {% if page_obj.has_next %}
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}{% if search_query %}&search={{ search_query }}{% endif %}{% if technology_filter %}&technology={{ technology_filter }}{% endif %}">Next</a></li>
+            {% else %}
+                <li class="page-item disabled"><span class="page-link">Next</span></li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+{% endblock %}

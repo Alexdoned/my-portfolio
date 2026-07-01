@@ -1,0 +1,41 @@
+{% extends 'core/base.html' %}
+{% block title %}Blog | Portfolio{% endblock %}
+{% block content %}
+<div class="container">
+    <h2 class="mb-4">Blog</h2>
+    <div class="row g-4">
+        {% for post in page_obj %}
+            <div class="col-md-6">
+                <div class="card h-100 shadow-sm">
+                    {% if post.featured_image %}
+                        <img src="{{ post.featured_image.url }}" class="card-img-top" alt="{{ post.title }}">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ post.title }}</h5>
+                        <p class="card-text text-truncate">{{ post.content|slice:':180' }}...</p>
+                        <a href="{% url 'blog_detail' post.slug %}" class="btn btn-outline-primary">Read more</a>
+                    </div>
+                    <div class="card-footer text-muted">{{ post.created_at|date:'M d, Y' }} by {{ post.author }}</div>
+                </div>
+            </div>
+        {% empty %}
+            <p>No blog posts yet.</p>
+        {% endfor %}
+    </div>
+    <nav class="mt-4">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+            {% else %}
+                <li class="page-item disabled"><span class="page-link">Previous</span></li>
+            {% endif %}
+            <li class="page-item disabled"><span class="page-link">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span></li>
+            {% if page_obj.has_next %}
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+            {% else %}
+                <li class="page-item disabled"><span class="page-link">Next</span></li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+{% endblock %}

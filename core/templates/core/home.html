@@ -1,0 +1,70 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Home | Portfolio{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row align-items-center hero-section">
+        <div class="col-lg-6">
+            <h1 class="display-5">Hi, I'm Anthony Alexander</h1>
+            <p class="lead">A passionate Django full-stack developer building modern digital experiences.</p>
+            <div class="mt-4">
+                <a href="{% url 'project_list' %}" class="btn btn-primary me-2">View Projects</a>
+                <a href="{% url 'contact' %}" class="btn btn-outline-light me-2">Contact Me</a>
+                {% if resume %}
+                    <a href="{% url 'resume_download' %}" class="btn btn-outline-secondary">Download Resume</a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-lg-6 text-center">
+            <img src="{% static 'core/img/profile-placeholder.png' %}" alt="Profile" class="img-fluid rounded-circle hero-img">
+        </div>
+    </div>
+
+    <section class="mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Featured Projects</h2>
+                <div class="row g-3">
+                    {% for project in featured_projects %}
+                        <div class="col-12">
+                            <div class="card project-card">
+                                <div class="row g-0 align-items-center">
+                                    <div class="col-md-4">
+                                        {% if project.image %}
+                                        <img src="{{ project.image.url }}" class="img-fluid rounded-start" alt="{{ project.title }}">
+                                        {% else %}
+                                        <div class="placeholder-img"></div>
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ project.title }}</h5>
+                                            <p class="card-text text-truncate">{{ project.description }}</p>
+                                            <a href="{% url 'project_detail' project.pk %}" class="stretched-link"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% empty %}
+                        <p>No projects published yet.</p>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h2>Latest Blog Posts</h2>
+                <ul class="list-group">
+                    {% for post in recent_posts %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a href="{% url 'blog_detail' post.slug %}">{{ post.title }}</a>
+                            <span class="badge bg-secondary rounded-pill">{{ post.created_at|date:'M d, Y' }}</span>
+                        </li>
+                    {% empty %}
+                        <li class="list-group-item">No blog posts yet.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
