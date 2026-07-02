@@ -1,70 +1,144 @@
 {% extends 'core/base.html' %}
 {% load static %}
-{% block title %}Home | Portfolio{% endblock %}
+{% block title %}
+  Home | Portfolio
+{% endblock %}
 {% block content %}
-<div class="container">
+  <div class="container">
     <div class="row align-items-center hero-section">
-        <div class="col-lg-6">
-            <h1 class="display-5">Hi, I'm Anthony Alexander</h1>
-            <p class="lead">A passionate software full-stack developer building modern digital experiences.</p>
-            <div class="mt-4">
-                <a href="{% url 'project_list' %}" class="btn btn-primary me-2">View Projects</a>
-                <a href="{% url 'contact' %}" class="btn btn-outline-light me-2">Contact Me</a>
-                {% if resume %}
-                    <a href="{% url 'resume_download' %}" class="btn btn-outline-secondary">Download Resume</a>
-                {% endif %}
-            </div>
+      <div class="col-lg-6">
+        <h1 class="display-5">Hi, I'm Anthony Alexander</h1>
+        <p class="lead">A passionate software full-stack developer building modern digital experiences.</p>
+        <div class="mt-4">
+          <a href="{% url 'project_list' %}" class="btn btn-primary me-2">View Projects</a>
+          <a href="{% url 'contact' %}" class="btn btn-outline-light me-2">Contact Me</a>
+          {% if resume %}
+            <a href="{% url 'resume_download' %}" class="btn btn-outline-secondary">Download Resume</a>
+          {% endif %}
         </div>
-        <div class="col-lg-6 text-center">
-            <img src="{% static 'core/img/profile.png' %}?v=2" alt="Anthony Alexander" class="img-fluid rounded-circle hero-img">
-        </div>
+      </div>
+      <div class="col-lg-6 text-center">
+        <img src="{% static 'core/img/profile.png' %}?v=2" alt="Anthony Alexander" class="img-fluid rounded-circle hero-img" />
+      </div>
     </div>
 
     <section class="mt-5">
-        <div class="row">
-            <div class="col-md-6">
-                <h2>Featured Projects</h2>
-                <div class="row g-3">
-                    {% for project in featured_projects %}
-                        <div class="col-12">
-                            <div class="card project-card">
-                                <div class="row g-0 align-items-center">
-                                    <div class="col-md-4">
-                                        {% if project.image %}
-                                        <img src="{{ project.image.url }}" class="img-fluid rounded-start" alt="{{ project.title }}">
-                                        {% else %}
-                                        <div class="placeholder-img"></div>
-                                        {% endif %}
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="card-body">
-                                            <h5 class="card-title">{{ project.title }}</h5>
-                                            <p class="card-text text-truncate">{{ project.description }}</p>
-                                            <a href="{% url 'project_detail' project.pk %}" class="stretched-link"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    {% empty %}
-                        <p>No projects published yet.</p>
-                    {% endfor %}
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Featured Projects</h2>
+          <div class="row g-3">
+            {% for project in featured_projects %}
+              <div class="col-12">
+                <div class="card project-card">
+                  <div class="row g-0 align-items-center">
+                    <div class="col-md-4">
+                      {% if project.image %}
+                        <img src="{{ project.image.url }}" class="img-fluid rounded-start" alt="{{ project.title }}" />
+                      {% else %}
+                        <div class="placeholder-img"></div>
+                      {% endif %}
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title">{{ project.title }}</h5>
+                        <p class="card-text text-truncate">{{ project.description }}</p>
+                        <a href="{% url 'project_detail' project.pk %}" class="stretched-link"></a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+              </div>
+            {% empty %}
+              <p>No projects published yet.</p>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h2>Latest Blog Posts</h2>
+          <ul class="list-group">
+            {% for post in recent_posts %}
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <a href="{% url 'blog_detail' post.slug %}">{{ post.title }}</a>
+                <span class="badge bg-secondary rounded-pill">{{ post.created_at|date:'M d, Y' }}</span>
+              </li>
+            {% empty %}
+              <li class="list-group-item">No blog posts yet.</li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="container">
+          <div class="row align-items-center mb-5">
+            <div class="col-lg-6">
+              <h2>About Me</h2>
+              <p>I am a dedicated software engineer with expertise in Django, REST APIs, responsive UI, and modern web design. I build intuitive digital products that scale efficiently and delight users.</p>
+            </div>
+            <div class="col-lg-6 text-center">
+              <img src="{% static 'core/img/about-illustration.png' %}" alt="About illustration" class="img-fluid rounded shadow-sm" />
+            </div>
+          </div>
+          <div class="row skills-section mb-5">
+            <div class="col-md-6">
+              <h3>Skills</h3>
+              <div class="mb-3">
+                <span>Python / Django</span>
+                <div class="progress">
+                  <div class="progress-bar" style="width: 95%;">95%</div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <span>HTML / CSS / Bootstrap/ Tailwindcss / Chakra UI</span>
+                <div class="progress">
+                  <div class="progress-bar bg-success" style="width: 90%;">90%</div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <span>JavaScript</span>
+                <div class="progress">
+                  <div class="progress-bar bg-info" style="width: 80%;">80%</div>
+                </div>
+              </div>
             </div>
             <div class="col-md-6">
-                <h2>Latest Blog Posts</h2>
-                <ul class="list-group">
-                    {% for post in recent_posts %}
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <a href="{% url 'blog_detail' post.slug %}">{{ post.title }}</a>
-                            <span class="badge bg-secondary rounded-pill">{{ post.created_at|date:'M d, Y' }}</span>
-                        </li>
-                    {% empty %}
-                        <li class="list-group-item">No blog posts yet.</li>
-                    {% endfor %}
-                </ul>
+              <h3>Education</h3>
+              <div class="mb-4">
+                <h5>B.Sc. in Computer Science</h5>
+                <p>Undergraduate, Taraba State University, Jalingo</p>
+              </div>
+              <h3>Certifications</h3>
+              <ul>
+                <li>Beginner in cybersecurity</li>
+                <li>Front-End Developer Beginner</li>
+                <li>Back-End Developer Beginner</li>
+              </ul>
             </div>
+          </div>
+          <div class="row goals-section mb-5">
+            <div class="col-12">
+              <h3>Career Goals</h3>
+              <p>My goal is to continue shipping polished, accessible, and performance-minded web experiences while growing into leadership roles that shape product direction and mentoring.</p>
+            </div>
+          </div>
+          <div class="row testimonials-section">
+            <div class="col-12">
+              <h3>Testimonials</h3>
+              <div class="row g-4">
+                <div class="col-md-6">
+                  <div class="card shadow-sm p-3">
+                    <p>"Excellent communication and thorough implementation from design to deployment."</p>
+                    <p class="text-muted mb-0">— Client A</p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="card shadow-sm p-3">
+                    <p>"Delivered a polished portfolio site with thoughtful UI/UX and smooth interactions."</p>
+                    <p class="text-muted mb-0">— Client B</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
-</div>
+  </div>
 {% endblock %}
