@@ -38,16 +38,17 @@ footer {
     border-color: var(--border);
 }
 
-.navbar-light .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='%23211' stroke-width='2' stroke-linecap='round' d='M4 7h22M4 15h22M4 23h22'/></svg>");
-}
-
-[data-theme='dark'] .navbar-light .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='%23fff' stroke-width='2' stroke-linecap='round' d='M4 7h22M4 15h22M4 23h22'/></svg>");
-}
-
 .navbar-toggler {
     border-color: rgba(16, 24, 40, 0.2);
+    color: var(--text);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='currentColor' stroke-width='2' stroke-linecap='round' d='M4 7h22M4 15h22M4 23h22'/></svg>");
+}
+
+.navbar-collapse {
+    background-color: var(--card);
 }
 
 .navbar .nav-link,
