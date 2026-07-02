@@ -8,7 +8,7 @@ from .models import Resume
 
 def home(request):
     try:
-        featured_projects = Project.objects.order_by('-created_at')[:4]
+        featured_projects = Project.objects.order_by('created_at')[:4]
         recent_posts = Blog.objects.order_by('-created_at')[:3]
         resume = Resume.objects.order_by('-uploaded_at').first()
     except DatabaseError:

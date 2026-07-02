@@ -7,7 +7,7 @@ from .models import Project
 def project_list(request):
     search_query = request.GET.get('search', '')
     technology_filter = request.GET.get('technology', '')
-    projects = Project.objects.all()
+    projects = Project.objects.order_by('created_at')
 
     if search_query:
         projects = projects.filter(
