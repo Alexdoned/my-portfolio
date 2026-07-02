@@ -33,6 +33,7 @@ body {
 
 .navbar,
 footer {
+    height: 100%;
     background-color: var(--card) !important;
     color: var(--text) !important;
     border-color: var(--border);
