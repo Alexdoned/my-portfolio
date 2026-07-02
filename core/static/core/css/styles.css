@@ -31,17 +31,29 @@ body {
     color: var(--text);
 }
 
-.navbar,
+.navbar {
+    background-color: var(--card) !important;
+    color: var(--text) !important;
+    border-color: var(--border);
+}
+
 footer {
-    height: 100vh;
     background-color: var(--card) !important;
     color: var(--text) !important;
     border-color: var(--border);
 }
 
 .navbar-toggler {
-    border-color: rgba(16, 24, 40, 0.2);
-    color: var(--text);
+    border-color: var(--text) !important;
+    color: var(--text) !important;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='black' stroke-width='2' stroke-linecap='round' d='M4 7h22M4 15h22M4 23h22'/></svg>");
+}
+
+[data-theme='dark'] .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='white' stroke-width='2' stroke-linecap='round' d='M4 7h22M4 15h22M4 23h22'/></svg>");
 }
 
 .navbar-toggler-icon {
