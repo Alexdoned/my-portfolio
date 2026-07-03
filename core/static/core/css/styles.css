@@ -180,34 +180,36 @@ footer .social-links {
 
 #theme-toggle,
 #theme-toggle i {
-    color: var(--text) !important;
+    color: #6b7280 !important;
 }
 
 #theme-toggle {
-    border-color: rgba(16, 24, 40, 0.2) !important;
+    border-color: #d1d5db !important;
     background-color: transparent !important;
 }
 
 #theme-toggle:hover,
 #theme-toggle:focus {
-    color: var(--text) !important;
-    background-color: rgba(15, 23, 42, 0.08) !important;
-    border-color: rgba(16, 24, 40, 0.35) !important;
+    color: #374151 !important;
+    background-color: rgba(0, 0, 0, 0.05) !important;
+    border-color: #9ca3af !important;
 }
 
 [data-theme='dark'] #theme-toggle,
 [data-theme='dark'] #theme-toggle i {
-    color: #fff !important;
+    color: #ffffff !important;
 }
 
 [data-theme='dark'] #theme-toggle {
-    border-color: rgba(255,255,255,0.6) !important;
+    border-color: #ffffff !important;
+    background-color: transparent !important;
 }
 
 [data-theme='dark'] #theme-toggle:hover,
 [data-theme='dark'] #theme-toggle:focus {
-    background-color: rgba(255,255,255,0.15) !important;
-    border-color: rgba(255,255,255,0.8) !important;
+    color: #ffffff !important;
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border-color: #ffffff !important;
 }
 
 @media (max-width: 768px) {
