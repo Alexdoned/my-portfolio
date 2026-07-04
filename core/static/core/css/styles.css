@@ -1,6 +1,4 @@
-/* ==========================================================================
-   1. Theme Color Design Variables
-   ========================================================================== */
+
 :root {
     --primary: #0d6efd;
     --bg-navbar: #ffffff;
@@ -19,9 +17,7 @@
     --border-toggle: #ffffff;
 }
 
-/* ==========================================================================
-   2. Main Layout Structure Custom Fixes
-   ========================================================================== */
+
 body {
     background-color: var(--bg-main) !important;
     color: var(--text-main) !important;
@@ -42,22 +38,27 @@ main {
     color: var(--text-navbar) !important;
 }
 
-/* ==========================================================================
-   3. Bootstrap Mobile Hamburger Visibility Fixes
-   ========================================================================== */
+
 .navbar-toggler {
-    /* Ensures the default Bootstrap hamburger menu icon lines stay dark/light with good contrast */
+   
     filter: invert(0);
     border-color: var(--border-toggle) !important;
 }
 
 [data-theme='dark'] .navbar-toggler {
-    filter: invert(1); /* Inverts icon lines cleanly to pure white on dark layouts */
+    filter: invert(1); 
 }
 
-/* ==========================================================================
-   4. Theme Label & Toggle Layout Styles
-   ========================================================================== */
+
+[data-theme='dark'] .navbar-toggler-icon {
+    filter: invert(1) !important;
+}
+
+
+[data-theme='dark'] .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
 #theme-label {
     font-size: 0.85rem;
     color: var(--text-navbar);
