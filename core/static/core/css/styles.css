@@ -72,7 +72,7 @@ main {
 } 
 
 #theme-toggle { 
-    color: var(--text-navbar) !important;
+    color: white;
     border: 1px solid var(--border-toggle) !important; 
     background-color: transparent !important;
 } 
