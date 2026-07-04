@@ -1,4 +1,4 @@
-// Locate required layout toggle structural hook targets
+
 const themeToggle = document.getElementById('theme-toggle');
 const themeLabel = document.getElementById('theme-label');
 const htmlTag = document.documentElement;
@@ -11,7 +11,7 @@ function setTheme(theme) {
     htmlTag.setAttribute('data-theme', theme);
     localStorage.setItem('portfolio-theme', theme);
 
-    // Targets structural icon layer safely to mutate content nodes cleanly
+    
     const toggleIcon = themeToggle ? themeToggle.querySelector('i') : null;
     if (toggleIcon) {
         if (theme === 'dark') {
@@ -34,11 +34,11 @@ function setTheme(theme) {
     }
 }
 
-// Check saved choice state values immediately on runtime execution
+
 const savedTheme = localStorage.getItem('portfolio-theme') || 'light';
 setTheme(savedTheme);
 
-// Handle operational tracking click listeners
+
 if (themeToggle) {
     themeToggle.addEventListener('click', () => {
         const currentTheme = htmlTag.getAttribute('data-theme');
@@ -47,7 +47,7 @@ if (themeToggle) {
     });
 }
 
-// Fallback listener validating rendering parameters
+
 document.addEventListener('DOMContentLoaded', () => {
     if (!localStorage.getItem('portfolio-theme')) {
         setTheme('light');

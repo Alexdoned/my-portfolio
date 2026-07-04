@@ -10,7 +10,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'core/css/styles.css' %}">
     
-    <!-- Inline anti-theme-flash optimization script -->
+
     <script>
         (function () {
             const savedTheme = localStorage.getItem('portfolio-theme') || 'light';
@@ -24,14 +24,14 @@
     <div class="container">
         <a class="navbar-brand" href="{% url 'home' %}">My Portfolio</a>
         
-        <!-- Interactive Layout Controls Grouped Together for Mobile Layout Alignment -->
+
         <div class="d-flex align-items-center order-lg-last ms-auto ms-lg-3">
             <button class="btn btn-sm" id="theme-toggle" aria-label="Toggle structural dark theme state">
                 <i class="fas fa-moon"></i>
             </button>
             <span class="ms-1 me-2 px-2 py-1 rounded" id="theme-label">Light</span>
 
-            <!-- Default Bootstrap Mobile Menu Button Component -->
+            
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
