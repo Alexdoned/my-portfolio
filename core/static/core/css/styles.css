@@ -164,49 +164,43 @@ footer .social-links {
     color: var(--text);
 }
 
-#theme-label.active {
-    background-color: var(--primary);
-    color: #212529;
-    border-color: var(--primary);
+/* --- Light Mode (Default) --- */
+#theme-toggle, 
+#theme-toggle i { 
+  /* Fixed hex code and changed to dark for contrast */
+  color: #212529 !important; 
+} 
+
+#theme-toggle { 
+  border-color: #d1d5db !important; 
+  background-color: transparent !important; 
+} 
+
+#theme-toggle:hover, 
+#theme-toggle:focus { 
+  color: #686b70 !important; 
+  background-color: rgba(0, 0, 0, 0.05) !important; 
+  border-color: #9ca3af !important; 
+} 
+
+/* --- Dark Mode Override --- */
+[data-theme='dark'] #theme-toggle, 
+[data-theme='dark'] #theme-toggle i { 
+  color: #ffffff !important; 
+} 
+
+[data-theme='dark'] #theme-toggle { 
+  border-color: #ffffff !important; 
+  background-color: transparent !important; 
+} 
+
+[data-theme='dark'] #theme-toggle:hover, 
+[data-theme='dark'] #theme-toggle:focus { 
+  color: #ffffff !important; 
+  background-color: rgba(255, 255, 255, 0.1) !important; 
+  border-color: #ffffff !important; 
 }
 
-[data-theme='dark'] #theme-label {
-    color: var(--text);
-}
-
-#theme-toggle,
-#theme-toggle i {
-    color: #ffff !important;
-}
-
-#theme-toggle {
-    border-color: #d1d5db !important;
-    background-color: transparent !important;
-}
-
-#theme-toggle:hover,
-#theme-toggle:focus {
-    color: #686b70 !important;
-    background-color: rgba(0, 0, 0, 0.05) !important;
-    border-color: #9ca3af !important;
-}
-
-[data-theme='dark'] #theme-toggle,
-[data-theme='dark'] #theme-toggle i {
-    color: #ffffff !important;
-}
-
-[data-theme='dark'] #theme-toggle {
-    border-color: #ffffff !important;
-    background-color: transparent !important;
-}
-
-[data-theme='dark'] #theme-toggle:hover,
-[data-theme='dark'] #theme-toggle:focus {
-    color: #ffffff !important;
-    background-color: rgba(255, 255, 255, 0.1) !important;
-    border-color: #ffffff !important;
-}
 
 @media (max-width: 768px) {
     .hero-section {
