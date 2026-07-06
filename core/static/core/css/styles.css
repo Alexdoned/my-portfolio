@@ -40,23 +40,11 @@ main {
 
 
 .navbar-toggler {
-   
-    filter: invert(0);
     border-color: var(--border-toggle) !important;
 }
 
-[data-theme='dark'] .navbar-toggler {
-    filter: invert(1); 
-}
-
-
 [data-theme='dark'] .navbar-toggler-icon {
     filter: invert(1) !important;
-}
-
-
-[data-theme='dark'] .navbar-toggler {
-    border-color: rgba(255, 255, 255, 0.5) !important;
 }
 
 #theme-label {
@@ -72,7 +60,7 @@ main {
 } 
 
 #theme-toggle { 
-    color: white;
+    color: var(--text-navbar) !important;
     border: 1px solid var(--border-toggle) !important; 
     background-color: transparent !important;
 } 
