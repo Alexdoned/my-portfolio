@@ -7,6 +7,7 @@ from core import views as core_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', core_views.home, name='home'),
+    path('', include('my-portfolio')),
     path('about/', core_views.about, name='about'),
     path('resume/', core_views.resume_download, name='resume_download'),
     path('projects/', include('projects.urls')),
@@ -16,4 +17,5 @@ urlpatterns = [
 ]
 
 if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_ULR, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
